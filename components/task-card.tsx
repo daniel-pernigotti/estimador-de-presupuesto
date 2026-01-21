@@ -12,9 +12,10 @@ interface TaskCardProps {
   selection: TaskSelection[string]
   onToggle: () => void
   onQuantityChange: (quantity: number) => void
+  disabled?: boolean
 }
 
-export function TaskCard({ task, selection, onToggle, onQuantityChange }: TaskCardProps) {
+export function TaskCard({ task, selection, onToggle, onQuantityChange, disabled = false }: TaskCardProps) {
   const quantityInputRef = useRef<HTMLInputElement>(null)
 
   const handleCardClick = (e: React.MouseEvent) => {
@@ -24,6 +25,7 @@ export function TaskCard({ task, selection, onToggle, onQuantityChange }: TaskCa
     ) {
       return
     }
+    if (disabled) return
 
     if (task.component === "Toggle") {
       onToggle()
@@ -35,7 +37,9 @@ export function TaskCard({ task, selection, onToggle, onQuantityChange }: TaskCa
 
   return (
     <div
-      className="bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-border/80 transition-colors"
+      className={`bg-card border border-border rounded-lg p-4 transition-colors ${
+        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-border/80"
+      }`}
       onClick={handleCardClick}
     >
       <div className="flex items-center justify-between gap-3">
@@ -51,12 +55,13 @@ export function TaskCard({ task, selection, onToggle, onQuantityChange }: TaskCa
 
         <div className="flex-shrink-0">
           {task.component === "Toggle" ? (
-            <Switch checked={selection?.enabled || false} onCheckedChange={onToggle} />
+            <Switch checked={selection?.enabled || false} onCheckedChange={onToggle} disabled={disabled} />
           ) : (
             <QuantitySelector
               value={selection?.quantity || 0}
               onChange={onQuantityChange}
               inputRef={quantityInputRef}
+              disabled={disabled}
             />
           )}
         </div>

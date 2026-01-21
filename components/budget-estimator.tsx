@@ -27,7 +27,7 @@ function decodeSelections(param: string | null): TaskSelection | null {
     if (task.category === "Esencial") {
       selections[task.id] = { enabled: true, quantity: 1 }
     } else if (task.component === "Toggle") {
-      selections[task.id] = { enabled: false, quantity: 1 }
+      selections[task.id] = { enabled: false, quantity: 0 }
     } else if (task.component === "Quantity") {
       selections[task.id] = { enabled: false, quantity: 0 }
     } else {
@@ -55,7 +55,7 @@ function getInitialSelections(): TaskSelection {
     if (task.category === "Esencial") {
       initial[task.id] = { enabled: true, quantity: 1 }
     } else if (task.component === "Toggle") {
-      initial[task.id] = { enabled: false, quantity: 1 }
+      initial[task.id] = { enabled: false, quantity: 0 }
     } else if (task.component === "Quantity") {
       const defaultQty = task.defaultQuantity ?? 0
       initial[task.id] = { enabled: defaultQty > 0, quantity: defaultQty }
@@ -142,7 +142,19 @@ export function BudgetEstimator() {
       const currentEnabled = prev[taskId]?.enabled
 
       // Toggle the current task
-      newSelections[taskId] = { ...prev[taskId], enabled: !currentEnabled }
+      if (!currentEnabled) {
+        newSelections[taskId] = {
+          ...prev[taskId],
+          enabled: true,
+          quantity: task?.component === "Quantity" ? prev[taskId]?.quantity ?? 1 : 0,
+        }
+      } else {
+        newSelections[taskId] = {
+          ...prev[taskId],
+          enabled: false,
+          quantity: 0,
+        }
+      }
 
       // If enabling and has mutual exclusivity, disable the other
       if (!currentEnabled && task?.mutuallyExclusiveWith) {
@@ -151,7 +163,7 @@ export function BudgetEstimator() {
           newSelections[task.mutuallyExclusiveWith] = {
             ...prev[task.mutuallyExclusiveWith],
             enabled: false,
-            quantity: otherTask.component === "Quantity" ? 0 : prev[task.mutuallyExclusiveWith]?.quantity || 1,
+            quantity: 0,
           }
         }
       }
@@ -173,7 +185,7 @@ export function BudgetEstimator() {
                 newSelections[t.id] = {
                   ...prev[t.id],
                   enabled: false,
-                  quantity: t.component === "Quantity" ? 0 : prev[t.id]?.quantity || 1,
+                  quantity: 0,
                 }
               }
             }

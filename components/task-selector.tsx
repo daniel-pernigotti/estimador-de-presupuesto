@@ -23,20 +23,20 @@ export function TaskSelector({ selections, onToggle, onQuantityChange, onViewSum
     const result: typeof categoryTasks = []
 
     for (const task of categoryTasks) {
-      // Skip dependent tasks here - they'll be added after their parent
+      // Skip dependent tasks here - we'll add them after their parent(s)
       if (task.visibleWhen) continue
 
-      // Check if this task should be visible (mutual exclusivity)
+      // Determine if this main task should be disabled due to mutual exclusivity
+      let disabled = false
       if (task.mutuallyExclusiveWith) {
         const otherSel = selections[task.mutuallyExclusiveWith]
-        // Hide if the other mutually exclusive task is active
         if (otherSel && (otherSel.enabled || otherSel.quantity > 0)) {
-          continue
+          disabled = true
         }
       }
 
-      // Add the main task
-      result.push(task)
+      // Add the main task (possibly disabled)
+      result.push({ ...(task as any), __disabled: disabled } as any)
 
       // Find and add dependent tasks that should appear right after this task
       const dependentTasks = categoryTasks.filter((t) => {
@@ -46,15 +46,18 @@ export function TaskSelector({ selections, onToggle, onQuantityChange, onViewSum
       })
 
       for (const depTask of dependentTasks) {
-        // Check if this task's parent is active
-        const thisSel = selections[task.id]
-        const isParentActive = thisSel && (thisSel.enabled || thisSel.quantity > 0)
+        // For dependent tasks, compute whether any of their dependencies is active
+        const dependencies = depTask.visibleWhen!.split("|")
+        const anyActive = dependencies.some((depId) => {
+          const sel = selections[depId]
+          return sel && (sel.enabled || sel.quantity > 0)
+        })
 
-        if (isParentActive) {
-          // For tasks with OR dependency (like product-load), check if not already added
-          if (!result.find((r) => r.id === depTask.id)) {
-            result.push(depTask)
-          }
+        const depDisabled = !anyActive
+
+        // Add dependent task (still visible but possibly disabled)
+        if (!result.find((r) => r.id === depTask.id)) {
+          result.push({ ...(depTask as any), __disabled: depDisabled } as any)
         }
       }
     }
@@ -79,11 +82,12 @@ export function TaskSelector({ selections, onToggle, onQuantityChange, onViewSum
             <section key={category} className="mb-8">
               <h2 className="text-sm font-medium text-muted-foreground mb-4">{category}</h2>
               <div className="space-y-3">
-                {visibleTasks.map((task) => (
+                {visibleTasks.map((task: any) => (
                   <TaskCard
                     key={task.id}
                     task={task}
                     selection={selections[task.id]}
+                    disabled={!!task.__disabled}
                     onToggle={() => onToggle(task.id)}
                     onQuantityChange={(qty) => onQuantityChange(task.id, qty)}
                   />

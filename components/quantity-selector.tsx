@@ -11,11 +11,13 @@ interface QuantitySelectorProps {
   min?: number
   max?: number
   inputRef?: RefObject<HTMLInputElement | null>
+  disabled?: boolean
 }
 
-export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef }: QuantitySelectorProps) {
+export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef, disabled = false }: QuantitySelectorProps) {
   const decrease = (e: React.MouseEvent) => {
     e.stopPropagation()
+    if (disabled) return
     if (value > min) {
       onChange(value - 1)
     }
@@ -23,12 +25,14 @@ export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef 
 
   const increase = (e: React.MouseEvent) => {
     e.stopPropagation()
+    if (disabled) return
     if (value < max) {
       onChange(value + 1)
     }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (disabled) return
     const newValue = Number.parseInt(e.target.value, 10)
     if (!isNaN(newValue) && newValue >= min && newValue <= max) {
       onChange(newValue)
@@ -41,8 +45,10 @@ export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef 
     <div className="flex items-center gap-1" data-quantity-control>
       <button
         onClick={decrease}
-        disabled={value <= min}
-        className="flex items-center justify-center text-white hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed transition-colors rounded-md"
+        disabled={disabled || value <= min}
+        className={`flex items-center justify-center text-white hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed transition-colors rounded-md ${
+          disabled ? "opacity-50 cursor-not-allowed" : ""
+        }`}
         style={{ width: 32, height: 32, backgroundColor: "#555555" }}
         aria-label="Disminuir cantidad"
       >
@@ -54,14 +60,19 @@ export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef 
         inputMode="numeric"
         value={value}
         onChange={handleInputChange}
+        disabled={disabled}
         onClick={(e) => e.stopPropagation()}
-        className="text-center text-sm font-medium tabular-nums bg-transparent border-none outline-none text-white"
+        className={`text-center text-sm font-medium tabular-nums bg-transparent border-none outline-none text-white ${
+          disabled ? "opacity-50 cursor-not-allowed" : ""
+        }`}
         style={{ width: 32, height: 32, backgroundColor: "#555555", borderRadius: 6 }}
       />
       <button
         onClick={increase}
-        disabled={value >= max}
-        className="flex items-center justify-center text-white hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed transition-colors rounded-md"
+        disabled={disabled || value >= max}
+        className={`flex items-center justify-center text-white hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed transition-colors rounded-md ${
+          disabled ? "opacity-50 cursor-not-allowed" : ""
+        }`}
         style={{ width: 32, height: 32, backgroundColor: "#555555" }}
         aria-label="Aumentar cantidad"
       >
