@@ -1,45 +1,52 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Minus, Plus } from "lucide-react"
-import type { RefObject } from "react"
+import { Minus, Plus } from "lucide-react";
+import type { RefObject } from "react";
 
 interface QuantitySelectorProps {
-  value: number
-  onChange: (value: number) => void
-  min?: number
-  max?: number
-  inputRef?: RefObject<HTMLInputElement | null>
-  disabled?: boolean
+  value: number;
+  onChange: (value: number) => void;
+  min?: number;
+  max?: number;
+  inputRef?: RefObject<HTMLInputElement | null>;
+  disabled?: boolean;
 }
 
-export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef, disabled = false }: QuantitySelectorProps) {
+export function QuantitySelector({
+  value,
+  onChange,
+  min = 0,
+  max = 99,
+  inputRef,
+  disabled = false,
+}: QuantitySelectorProps) {
   const decrease = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    if (disabled) return
+    e.stopPropagation();
+    if (disabled) return;
     if (value > min) {
-      onChange(value - 1)
+      onChange(value - 1);
     }
-  }
+  };
 
   const increase = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    if (disabled) return
+    e.stopPropagation();
+    if (disabled) return;
     if (value < max) {
-      onChange(value + 1)
+      onChange(value + 1);
     }
-  }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) return
-    const newValue = Number.parseInt(e.target.value, 10)
+    if (disabled) return;
+    const newValue = Number.parseInt(e.target.value, 10);
     if (!isNaN(newValue) && newValue >= min && newValue <= max) {
-      onChange(newValue)
+      onChange(newValue);
     } else if (e.target.value === "") {
-      onChange(0)
+      onChange(0);
     }
-  }
+  };
 
   return (
     <div className="flex items-center gap-1" data-quantity-control>
@@ -65,7 +72,12 @@ export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef,
         className={`text-center text-sm font-medium tabular-nums bg-transparent border-none outline-none text-white ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
-        style={{ width: 32, height: 32, backgroundColor: "#555555", borderRadius: 6 }}
+        style={{
+          width: 32,
+          height: 32,
+          backgroundColor: "#555555",
+          borderRadius: 6,
+        }}
       />
       <button
         onClick={increase}
@@ -79,5 +91,5 @@ export function QuantitySelector({ value, onChange, min = 0, max = 99, inputRef,
         <Plus className="w-4 h-4" />
       </button>
     </div>
-  )
+  );
 }

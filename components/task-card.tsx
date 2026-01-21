@@ -1,44 +1,52 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import type { Task, TaskSelection } from "@/lib/tasks-data"
-import { Switch } from "@/components/ui/switch"
-import { QuantitySelector } from "@/components/quantity-selector"
-import { useRef } from "react"
+import type { Task, TaskSelection } from "@/lib/tasks-data";
+import { Switch } from "@/components/ui/switch";
+import { QuantitySelector } from "@/components/quantity-selector";
+import { useRef } from "react";
 
 interface TaskCardProps {
-  task: Task
-  selection: TaskSelection[string]
-  onToggle: () => void
-  onQuantityChange: (quantity: number) => void
-  disabled?: boolean
+  task: Task;
+  selection: TaskSelection[string];
+  onToggle: () => void;
+  onQuantityChange: (quantity: number) => void;
+  disabled?: boolean;
 }
 
-export function TaskCard({ task, selection, onToggle, onQuantityChange, disabled = false }: TaskCardProps) {
-  const quantityInputRef = useRef<HTMLInputElement>(null)
+export function TaskCard({
+  task,
+  selection,
+  onToggle,
+  onQuantityChange,
+  disabled = false,
+}: TaskCardProps) {
+  const quantityInputRef = useRef<HTMLInputElement>(null);
 
   const handleCardClick = (e: React.MouseEvent) => {
     if (
       (e.target as HTMLElement).closest('[data-slot="switch"]') ||
       (e.target as HTMLElement).closest("[data-quantity-control]")
     ) {
-      return
+      return;
     }
-    if (disabled) return
+    if (disabled) return;
 
     if (task.component === "Toggle") {
-      onToggle()
+      onToggle();
     } else {
-      quantityInputRef.current?.focus()
-      quantityInputRef.current?.select()
+      quantityInputRef.current?.focus();
+      quantityInputRef.current?.select();
     }
-  }
+  };
 
   return (
     <div
       className={`bg-card border border-border rounded-lg p-4 transition-colors ${
-        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-border/80"
+        disabled
+          ? "opacity-50 cursor-not-allowed"
+          : "cursor-pointer hover:border-border/80"
       }`}
       onClick={handleCardClick}
     >
@@ -55,7 +63,11 @@ export function TaskCard({ task, selection, onToggle, onQuantityChange, disabled
 
         <div className="flex-shrink-0">
           {task.component === "Toggle" ? (
-            <Switch checked={selection?.enabled || false} onCheckedChange={onToggle} disabled={disabled} />
+            <Switch
+              checked={selection?.enabled || false}
+              onCheckedChange={onToggle}
+              disabled={disabled}
+            />
           ) : (
             <QuantitySelector
               value={selection?.quantity || 0}
@@ -67,5 +79,5 @@ export function TaskCard({ task, selection, onToggle, onQuantityChange, disabled
         </div>
       </div>
     </div>
-  )
+  );
 }

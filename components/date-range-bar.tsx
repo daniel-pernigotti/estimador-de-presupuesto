@@ -1,12 +1,16 @@
-"use client"
+"use client";
 
 interface DateRangeBarProps {
-  startDate: string
-  endDate: string
-  onStartDateClick?: () => void
+  startDate: string;
+  endDate: string;
+  onStartDateClick?: () => void;
 }
 
-export function DateRangeBar({ startDate, endDate, onStartDateClick }: DateRangeBarProps) {
+export function DateRangeBar({
+  startDate,
+  endDate,
+  onStartDateClick,
+}: DateRangeBarProps) {
   return (
     <div className="bg-muted h-[52px] rounded-xl flex justify-center items-center gap-1">
       {/* Comienzo sub-container */}
@@ -31,5 +35,5 @@ export function DateRangeBar({ startDate, endDate, onStartDateClick }: DateRange
         </div>
       </div>
     </div>
-  )
+  );
 }
