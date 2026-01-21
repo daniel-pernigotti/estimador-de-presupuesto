@@ -42,7 +42,7 @@ export const tasks: Task[] = [
     id: "testing",
     name: "Testing",
     description: "",
-    price: 192000,
+    price: 162000,
     hours: 24,
     category: "Esencial",
     component: "Solo visible en el resumen",
