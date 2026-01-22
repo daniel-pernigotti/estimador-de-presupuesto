@@ -68,8 +68,7 @@ export function Summary({
     const currentUrl =
       typeof window !== "undefined" ? window.location.href : "";
     const message = encodeURIComponent(
-      `Hola, te escribo desde el estimador de presupuesto para consultar por mi proyecto web.
-\n\nTotal estimado: ${formatPrice(totals.totalPrice)}\nTiempo estimado: ${formatTime(totals.totalHours)}\n\nVer detalle: ${currentUrl}`,
+      `Hola, te escribo desde el estimador de presupuesto para consultar por mi proyecto web\n------------------------------------------------------------\nTotal estimado: ${formatPrice(totals.totalPrice)}\nTiempo estimado: ${formatTime(totals.totalHours)}\n------------------------------------------------------------\nVer detalle: ${currentUrl}`,
     );
     window.open(`https://wa.me/5491164715688?text=${message}`, "_blank");
   };

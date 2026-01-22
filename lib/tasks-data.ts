@@ -21,7 +21,7 @@ export interface TaskSelection {
 export const tasks: Task[] = [
   // Esencial (hidden, auto-included)
   {
-    id: "hosting",
+    id: "h",
     name: "Configuración de hosting, dominio e instalación de WordPress",
     description: "",
     price: 40000,
@@ -30,7 +30,7 @@ export const tasks: Task[] = [
     component: "Solo visible en el resumen",
   },
   {
-    id: "design-customization",
+    id: "dc",
     name: "Personalización del diseño (encabezado, pie de página, colores y fuentes)",
     description: "",
     price: 50000,
@@ -39,7 +39,7 @@ export const tasks: Task[] = [
     component: "Solo visible en el resumen",
   },
   {
-    id: "testing",
+    id: "tst",
     name: "Testing",
     description: "",
     price: 162000,
@@ -49,7 +49,7 @@ export const tasks: Task[] = [
   },
   // Principal
   {
-    id: "page-3-sections",
+    id: "p3s",
     name: "Página de 3 secciones",
     description:
       "Desarrollo de una unidad individual (por ej. Quiénes somos) dentro de un sitio web compuesta por hasta tres bloques de contenido.",
@@ -60,7 +60,7 @@ export const tasks: Task[] = [
     defaultQuantity: 1,
   },
   {
-    id: "additional-section",
+    id: "as",
     name: "Sección adicional",
     description:
       "Bloque de contenido que forma parte de una página. Por ej. contenido informativo de texto con iconos o imágenes.",
@@ -70,7 +70,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "mail-config",
+    id: "m",
     name: "Configuración de mail",
     description: "",
     price: 60000,
@@ -79,7 +79,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "additional-mailbox",
+    id: "am",
     name: "Casilla de mail adicional",
     description:
       "Creación y puesta en funcionamiento de una cuenta de correo extra asociada al dominio, independiente de la principal.",
@@ -90,7 +90,7 @@ export const tasks: Task[] = [
     visibleWhen: "mail-config",
   },
   {
-    id: "simple-contact-form",
+    id: "sf",
     name: "Formulario de contacto simple",
     description:
       "Campos básicos, sin lógica condicional ni cálculos, orientado a la recepción de mensajes estándar. Por ej. nombre, mail, mensaje.",
@@ -100,7 +100,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "additional-simple-form",
+    id: "asf",
     name: "Formulario de contacto simple adicional (Distintos campos)",
     description:
       "Formulario adicional, sin lógica condicional ni cálculos, con campos diferentes al formulario simple principal.",
@@ -111,7 +111,7 @@ export const tasks: Task[] = [
     visibleWhen: "simple-contact-form",
   },
   {
-    id: "complex-form",
+    id: "cf",
     name: "Formulario complejo",
     description:
       "Campos con lógica avanzada, validaciones y/o cálculos. Por ej. subida de archivos, selección de provincias, búsqueda.",
@@ -121,7 +121,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "additional-complex-form",
+    id: "acf",
     name: "Formulario complejo adicional (Distintos campos)",
     description:
       "Formulario avanzado adicional que incorpora lógica, validaciones o cálculos, utilizando un conjunto de campos distinto al formulario complejo principal.",
@@ -132,7 +132,7 @@ export const tasks: Task[] = [
     visibleWhen: "complex-form",
   },
   {
-    id: "seo-optimization",
+    id: "seo",
     name: "Optimización para motores de búsqueda y rendimiento",
     description:
       "Mejoras para velocidad de carga, posicionamiento en buscadores y accesibilidad del sitio.",
@@ -143,7 +143,7 @@ export const tasks: Task[] = [
   },
   // Contenido
   {
-    id: "blog",
+    id: "b",
     name: "Blog",
     description:
       "Área del sitio destinada a la publicación de artículos o entradas.",
@@ -153,7 +153,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "image-gallery",
+    id: "ig",
     name: "Galería de imágenes",
     description:
       "Bloque visual para mostrar múltiples imágenes organizadas en grilla, carrusel o vista ampliada.",
@@ -163,7 +163,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "text-writing",
+    id: "tw",
     name: "Redacción de texto por sección",
     description:
       "Textos redactados manualmente a partir de investigación, usando IA para corrección y pulido.",
@@ -173,7 +173,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "image-creation",
+    id: "ic",
     name: "Creación de imagen o compra de imagen stock",
     description:
       "Generación de imágenes propias o selección de imágenes de stock. Incluye edición.",
@@ -183,7 +183,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "image-editing",
+    id: "ie",
     name: "Edición de imagen",
     description:
       "Puede incluir ajustes visuales, limpieza de imperfecciones y redimensionado.",
@@ -193,7 +193,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "logo-creation",
+    id: "l",
     name: "Creación de logo",
     description:
       "Diseño simple de logo con versión a color, positivo y negativo. No incluye manual de marca.",
@@ -204,7 +204,7 @@ export const tasks: Task[] = [
   },
   // Funcionalidades
   {
-    id: "google-analytics",
+    id: "ga",
     name: "Integración con Google Analytics",
     description:
       "Vinculación con herramientas de medición para obtener datos de visitas y comportamiento de usuario.",
@@ -214,7 +214,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "user-roles",
+    id: "ur",
     name: "Sistema de roles y permisos de usuario por persona",
     description:
       "Definición de accesos y permisos según el tipo de usuario dentro del sitio.",
@@ -224,7 +224,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "simplified-panel",
+    id: "sp",
     name: "Panel simplificado de edición y subida de archivos",
     description:
       "Configuración de una interfaz clara para que el cliente pueda editar contenidos o subir archivos sin conocimientos técnicos.",
@@ -234,7 +234,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "downloadable-files",
+    id: "df",
     name: "Implementación de archivos descargables",
     description:
       "Configuración de archivos para descarga directa desde el sitio con acceso controlado.",
@@ -244,7 +244,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "payment-system",
+    id: "ps",
     name: "Sistema de pagos",
     description:
       "Integración de pasarela de pago con métodos como Mercado Pago y tarjetas.",
@@ -254,7 +254,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "discount-system",
+    id: "ds",
     name: "Sistema de descuentos",
     description: "Configuración de cupones y reglas de descuento.",
     price: 40000,
@@ -264,7 +264,7 @@ export const tasks: Task[] = [
     visibleWhen: "payment-system",
   },
   {
-    id: "basic-store",
+    id: "bs",
     name: "Tienda online básica",
     description:
       "Tienda con estructura simple para mostrar y vender productos, con catálogo reducido y botón de consulta por WhatsApp. No incluye sistema de pago.",
@@ -275,7 +275,7 @@ export const tasks: Task[] = [
     mutuallyExclusiveWith: "complete-store",
   },
   {
-    id: "complete-store",
+    id: "cs",
     name: "Tienda online completa",
     description:
       "Implementación integral de e-commerce que incluye productos, categorías, envíos, impuestos, checkout, emails y pasarela de pago.",
@@ -286,7 +286,7 @@ export const tasks: Task[] = [
     mutuallyExclusiveWith: "basic-store",
   },
   {
-    id: "product-load",
+    id: "pl",
     name: "Carga de productos",
     description:
       "Incorporación de productos a la tienda con datos básicos. No incluye imagen ni descripción.",
@@ -298,7 +298,7 @@ export const tasks: Task[] = [
   },
   // Soporte y seguridad
   {
-    id: "security-config",
+    id: "sec",
     name: "Configuración completa de seguridad",
     description:
       "Implementación de medidas de seguridad como firewall, captcha, filtros y protección contra ataques.",
@@ -308,7 +308,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "privacy-cookies",
+    id: "pc",
     name: "Política de privacidad / Cookies",
     description:
       "Implementación de aviso de cookies con gestión de consentimiento.",
@@ -318,7 +318,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "online-training",
+    id: "ot",
     name: "Capacitación por hora online",
     description:
       "Sesión de formación para aprender a usar y administrar el sitio web por videollamada.",
@@ -328,7 +328,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "presential-training",
+    id: "pt",
     name: "Capacitación por hora presencial",
     description:
       "Sesión de formación para aprender a usar y administrar el sitio web de forma presencial.",
@@ -338,7 +338,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "documentation",
+    id: "doc",
     name: "Documentación: Manual de uso",
     description:
       "Entrega de manual mediante sitio web y/o PDF con instrucciones claras para gestionar el sitio.",
@@ -348,7 +348,7 @@ export const tasks: Task[] = [
     component: "Toggle",
   },
   {
-    id: "video-tutorial",
+    id: "vt",
     name: "Video tutorial por tema",
     description:
       "Video explicativo sobre un tema específico, con duración máxima de 10 minutos.",
@@ -358,7 +358,7 @@ export const tasks: Task[] = [
     component: "Quantity",
   },
   {
-    id: "monthly-maintenance",
+    id: "mm",
     name: "Mantenimiento básico mensual",
     description:
       "Servicio recurrente con pago mensual independiente que incluye actualizaciones, revisiones de seguridad y copias de respaldo.",
@@ -369,7 +369,7 @@ export const tasks: Task[] = [
   },
   // Incluido gratis
   {
-    id: "essential-plugins",
+    id: "epl",
     name: "Plugins esenciales",
     description: "",
     price: 0,
@@ -378,7 +378,7 @@ export const tasks: Task[] = [
     component: "Solo visible en el resumen",
   },
   {
-    id: "responsive",
+    id: "res",
     name: "Implementación responsive",
     description: "",
     price: 0,
@@ -387,7 +387,7 @@ export const tasks: Task[] = [
     component: "Solo visible en el resumen",
   },
   {
-    id: "favicon",
+    id: "fv",
     name: "Favicon",
     description: "",
     price: 0,
@@ -396,7 +396,7 @@ export const tasks: Task[] = [
     component: "Solo visible en el resumen",
   },
   {
-    id: "social-integration",
+    id: "irs",
     name: "Integración redes sociales",
     description: "",
     price: 0,
@@ -405,7 +405,7 @@ export const tasks: Task[] = [
     component: "Solo visible en el resumen",
   },
   {
-    id: "support",
+    id: "sup",
     name: "Soporte dentro de plazo de trabajo",
     description: "",
     price: 0,
