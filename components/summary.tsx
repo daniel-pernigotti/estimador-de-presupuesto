@@ -70,7 +70,7 @@ export function Summary({
     const message = encodeURIComponent(
       `Hola, te escribo desde el estimador de presupuesto para consultar por mi proyecto web\n------------------------------------------------------------\nTotal estimado: ${formatPrice(totals.totalPrice)}\nTiempo estimado: ${formatTime(totals.totalHours)}\n------------------------------------------------------------\nVer detalle: ${currentUrl}`,
     );
-    window.open(`https://wa.me/5491164715688?text=${message}`, "_blank");
+    window.open(`https://wa.me/?text=${message}`, "_blank");
   };
 
   // Close date picker when clicking outside
