@@ -40,20 +40,20 @@ export const tasks: Task[] = [
   },
   {
     id: "tst",
-    name: "Testing",
+    name: "Testing y corrección de errores",
     description: "",
-    price: 162000,
-    hours: 24,
+    price: 64000,
+    hours: 8,
     category: "Esencial",
     component: "Solo visible en el resumen",
   },
   // Principal
   {
     id: "p3s",
-    name: "Página de 3 secciones",
+    name: "Página (hasta 3 secciones de contenido)",
     description:
       "Desarrollo de una unidad individual (por ej. Quiénes somos) dentro de un sitio web compuesta por hasta tres bloques de contenido.",
-    price: 80000,
+    price: 86000,
     hours: 8,
     category: "Principal",
     component: "Quantity",
@@ -64,7 +64,7 @@ export const tasks: Task[] = [
     name: "Sección adicional",
     description:
       "Bloque de contenido que forma parte de una página. Por ej. contenido informativo de texto con iconos o imágenes.",
-    price: 30000,
+    price: 42000,
     hours: 3,
     category: "Principal",
     component: "Quantity",
@@ -73,7 +73,7 @@ export const tasks: Task[] = [
     id: "m",
     name: "Configuración de mail",
     description: "",
-    price: 60000,
+    price: 62000,
     hours: 8,
     category: "Principal",
     component: "Toggle",
@@ -94,7 +94,7 @@ export const tasks: Task[] = [
     name: "Formulario de contacto simple",
     description:
       "Campos básicos, sin lógica condicional ni cálculos, orientado a la recepción de mensajes estándar. Por ej. nombre, mail, mensaje.",
-    price: 64000,
+    price: 72000,
     hours: 8,
     category: "Principal",
     component: "Toggle",
@@ -104,7 +104,7 @@ export const tasks: Task[] = [
     name: "Formulario de contacto simple adicional (Distintos campos)",
     description:
       "Formulario adicional, sin lógica condicional ni cálculos, con campos diferentes al formulario simple principal.",
-    price: 24000,
+    price: 36000,
     hours: 3,
     category: "Principal",
     component: "Quantity",
@@ -218,7 +218,7 @@ export const tasks: Task[] = [
     name: "Sistema de roles y permisos de usuario por persona",
     description:
       "Definición de accesos y permisos según el tipo de usuario dentro del sitio.",
-    price: 62000,
+    price: 9000,
     hours: 8,
     category: "Funcionalidades",
     component: "Toggle",
@@ -238,7 +238,7 @@ export const tasks: Task[] = [
     name: "Implementación de archivos descargables",
     description:
       "Configuración de archivos para descarga directa desde el sitio con acceso controlado.",
-    price: 64000,
+    price: 96000,
     hours: 8,
     category: "Funcionalidades",
     component: "Toggle",
@@ -257,8 +257,8 @@ export const tasks: Task[] = [
     id: "ds",
     name: "Sistema de descuentos",
     description: "Configuración de cupones y reglas de descuento.",
-    price: 40000,
-    hours: 3,
+    price: 56000,
+    hours: 6,
     category: "Funcionalidades",
     component: "Toggle",
     visibleWhen: "payment-system",
@@ -268,8 +268,8 @@ export const tasks: Task[] = [
     name: "Tienda online básica",
     description:
       "Tienda con estructura simple para mostrar y vender productos, con catálogo reducido y botón de consulta por WhatsApp. No incluye sistema de pago.",
-    price: 234000,
-    hours: 26,
+    price: 354000,
+    hours: 48,
     category: "Funcionalidades",
     component: "Toggle",
     mutuallyExclusiveWith: "complete-store",
@@ -279,7 +279,7 @@ export const tasks: Task[] = [
     name: "Tienda online completa",
     description:
       "Implementación integral de e-commerce que incluye productos, categorías, envíos, impuestos, checkout, emails y pasarela de pago.",
-    price: 698000,
+    price: 950000,
     hours: 96,
     category: "Funcionalidades",
     component: "Toggle",
@@ -290,7 +290,7 @@ export const tasks: Task[] = [
     name: "Carga de productos",
     description:
       "Incorporación de productos a la tienda con datos básicos. No incluye imagen ni descripción.",
-    price: 3000,
+    price: 4000,
     hours: 0.2,
     category: "Funcionalidades",
     component: "Quantity",
@@ -302,7 +302,7 @@ export const tasks: Task[] = [
     name: "Configuración completa de seguridad",
     description:
       "Implementación de medidas de seguridad como firewall, captcha, filtros y protección contra ataques.",
-    price: 350000,
+    price: 346000,
     hours: 36,
     category: "Soporte y seguridad",
     component: "Toggle",
@@ -312,7 +312,7 @@ export const tasks: Task[] = [
     name: "Política de privacidad / Cookies",
     description:
       "Implementación de aviso de cookies con gestión de consentimiento.",
-    price: 30000,
+    price: 34000,
     hours: 3,
     category: "Soporte y seguridad",
     component: "Toggle",
@@ -342,8 +342,8 @@ export const tasks: Task[] = [
     name: "Documentación: Manual de uso",
     description:
       "Entrega de manual mediante sitio web y/o PDF con instrucciones claras para gestionar el sitio.",
-    price: 120000,
-    hours: 12,
+    price: 256000,
+    hours: 48,
     category: "Soporte y seguridad",
     component: "Toggle",
   },
