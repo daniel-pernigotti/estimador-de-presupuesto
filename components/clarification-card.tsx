@@ -1,11 +1,11 @@
 export function ClarificationCard() {
   return (
-    <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mt-8">
+    <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-8">
       <h3 className="text-amber-500 font-semibold mb-3 flex items-center gap-2">
         <span className="w-1 h-4 bg-amber-500 rounded-full" />
         ACLARACIÓN
       </h3>
-      <div className="space-y-3 text-sm text-white leading-relaxed">
+      <div className="space-y-3 text-xs text-white leading-relaxed">
         <p>
           <strong>Cambios completos o parciales</strong> se cobra como adicional
           en base a la tarea correspondiente (sólicita). Por ej. reemplazo

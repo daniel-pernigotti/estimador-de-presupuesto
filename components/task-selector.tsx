@@ -83,6 +83,7 @@ export function TaskSelector({
       </header>
 
       <main className="px-4 py-6 pb-32 max-w-[600px] mx-auto">
+        <ClarificationCard />
         {categories.map((category) => {
           const visibleTasks = getVisibleTasksForCategory(category);
           if (visibleTasks.length === 0) return null;
@@ -107,8 +108,6 @@ export function TaskSelector({
             </section>
           );
         })}
-
-        <ClarificationCard />
       </main>
 
       <footer className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-4 py-4">
