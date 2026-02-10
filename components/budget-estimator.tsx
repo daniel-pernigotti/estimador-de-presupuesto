@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { TaskSelector } from "@/components/task-selector";
 import { Summary } from "@/components/summary";
@@ -86,6 +86,7 @@ function getDefaultStartDate(): Date {
 export function BudgetEstimator() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const isInitializedRef = useRef(false);
 
   const [view, setView] = useState<"selector" | "summary">("selector");
   const [selections, setSelections] = useState<TaskSelection>(() => {
@@ -103,6 +104,11 @@ export function BudgetEstimator() {
   });
 
   useEffect(() => {
+    if (!isInitializedRef.current) {
+      isInitializedRef.current = true;
+      return;
+    }
+
     const encoded = encodeSelections(selections);
     const dateStr = startDate.toISOString().split("T")[0];
     const newUrl = `?s=${encoded}&d=${dateStr}`;
